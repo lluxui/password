@@ -1,0 +1,63 @@
+<!doctype html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Password Input</title>
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <form action="#">
+        <label class="password">
+          <input type="password" placeholder="">
+          <span>Password is blank</span>
+        </label>
+      </form>
+    </div>
+
+    <script>
+
+      window.onload = function() {
+
+        var label = document.getElementsByClassName('password')[0];
+        var input = label.getElementsByTagName('input')[0];
+        var span = label.getElementsByTagName('span')[0];
+
+        input.addEventListener('keyup', function(e) {
+
+          var len = input.value.length;
+
+          if (len === 0) {
+
+            label.className = "password";
+            span.innerText = "Password is blank";
+
+          } else if (len > 0 && len <= 4) {
+
+            label.className = "password weak";
+            span.innerText = "Too weak";
+
+          } else if (len > 4 && len <= 8) {
+
+            label.className = "password strong";
+            span.innerText = "Could be stronger";
+
+          } else {
+
+            label.className = "password stronger";
+            span.innerText = "Strong password";
+          }
+
+        });
+
+      };
+
+    </script>
+
+  </body>
+
+</html>
